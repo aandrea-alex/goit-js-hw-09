@@ -66,6 +66,9 @@ const images = [
 
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
+import '../css/layout/simple-lightbox-window.css'; 
+
 import iconsUrl from '../img/icons.svg';
 
 let modalWindowRef = null;
@@ -93,37 +96,39 @@ const imagesMarkup = createGallery(images);
 galleryRef.insertAdjacentHTML('beforeend', imagesMarkup);
 
 new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionPosition: 'bottom',
-  captionsDelay: 250,
-
-  nav: true,
-  navText: [
-    `<svg
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+  
+    nav: true,
+    navText: [
+      `<svg
       class="lightbox-button-icon-prev"
       width="24"
       height="24"
       aria-label="icon arrow left">
         <use href="${iconsUrl}#icon-chevron-left"></use>
     </svg>`,
-
-    `<svg
+  
+      `<svg
       class="lightbox-button-icon-next"
       width="24"
       height="24"
       aria-label="icon arrow right">
       <use href="${iconsUrl}#icon-chevron-right"></use>
     </svg>`,
-  ],
-
-  close: true,
-  closeText: `
+    ],
+  
+    close: true,
+    closeText: `
     <svg class="lightbox-close-icon" width="16" height="16">
       <use href="${iconsUrl}#close-form"></use>
     </svg>`,
-
-  enableKeyboard: true,
-  showCounter: true,
-  animationSlide: true,
-  loop: true,
-});
+  
+    enableKeyboard: true,
+    showCounter: true,
+    animationSlide: true,
+    loop: true,
+    widthRatio: 0.85,
+    heightRatio: 0.9,
+  });

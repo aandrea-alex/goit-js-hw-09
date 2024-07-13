@@ -6,8 +6,7 @@
 @import url('./layout/header.css');
 
 @import url("./layout/gallery.css");
-@import url("./layout/modal-window.css");
-@import url("./layout/basic-lightbox-window.css");
+@import url("./layout/simple-lightbox-window.css");
 
 @import url("./layout/feedback-form.css");
             
