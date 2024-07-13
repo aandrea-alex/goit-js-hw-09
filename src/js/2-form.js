@@ -1,12 +1,11 @@
-// Class for storing form input field data in the localStorage.
+// Class for storing form input field data to the local Storage.
 
 class FeedbackFormState {
     static localStorageKey = 'feedback-form-state';
   
-    #form = {}; // Reference to form
-    #inputs = []; // Array of references to form input fields
-    #formData = {}; //An object containing data that is entered into
-    //the form inputs {name: value, }
+    #form = {}; 
+    #inputs = []; 
+    #formData = {}; 
   
     constructor(form) {
       if (form) this.#inputs = form.querySelectorAll('input, textarea');
@@ -17,8 +16,7 @@ class FeedbackFormState {
         this.#form.addEventListener('input', this.onInput.bind(this));
       }
     }
-  
-    // Class interface
+
     destroy() {
       if (this.#inputs) {
         this.#form.removeEventListener('submit', this.onSubmitForm.bind(this));
@@ -30,8 +28,7 @@ class FeedbackFormState {
       this.#getDataFromLocalStorage();
       this.#insertDataToForm();
     }
-  
-    // Event handlers
+
     onInput(event) {
       this.#inputs.forEach(input => {
         if (input.name) {
@@ -39,13 +36,14 @@ class FeedbackFormState {
             event.currentTarget.elements[input.name].value.trim();
         }
       });
+
       this.#saveDataToStorage();
     }
   
     onSubmitForm(event) {
       event.preventDefault();
       if (!this.#isFormFilled()) {
-        return alert('Not all fields are filled in');
+        return alert('Fill please all fields');
       }
       console.log('submit data: ', this.#formData);
       localStorage.removeItem(FeedbackFormState.localStorageKey);
@@ -53,7 +51,6 @@ class FeedbackFormState {
       event.currentTarget.reset();
     }
   
-    // Private methods
     #getDataFromLocalStorage() {
       const strSavedData = localStorage.getItem(
         FeedbackFormState.localStorageKey
